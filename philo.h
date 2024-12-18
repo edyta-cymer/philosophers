@@ -7,6 +7,9 @@
 #include <limits.h> // INT_MAX
 #include <errno.h>
 
+#define MAX_PHILOSOPHERS 200
+
+
 /*
 OPCODE for mutex and threads functions */
 // enumeracja
@@ -55,7 +58,11 @@ typedef struct s_data {
     t_philosopher *philosophers;
 } t_data;
 
-bool    validate_input(int argc, char *argv[]);
+bool    validate_input(char *argv[]);
+bool    validate_optional_input(const char *arg);
+bool    is_valid_num(const char *arg);
 
 int		init_data(t_data **project, int argc, char *argv[]);
 void    error_exit(const char *error);
+int	ft_atoi(const char *str);
+int	ft_isnum(char c);

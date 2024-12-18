@@ -6,45 +6,61 @@
 /*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 17:41:16 by ecymer            #+#    #+#             */
-/*   Updated: 2024/12/18 18:17:14 by ecymer           ###   ########.fr       */
+/*   Updated: 2024/12/18 20:23:32 by ecymer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	ft_isnum(char c)
+bool    is_valid_num(const char *arg)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+    int     i;
+
+    i = 0;
+    while(arg[i] != '\0')
+    {
+        if(ft_isnum(arg[i]) == 0)
+            return(false);
+        i++;
+    }
+    return (true);
 }
 
-bool    validate_input(int argc, char *argv[])
+bool    validate_optional_input(const char *arg)
+{
+    if (!is_valid_num(arg))
+        error_exit("Error: Argument 5 contains invalid characters.\n");
+    if (ft_atoi(arg) < 0)
+        error_exit("Error: Argument 5 must be a non-negative number.\n");
+    return(true);
+}
+
+bool    validate_input(char *argv[])
 {
     int     i;
     int     j;
 
     i = 1;
-    while(i < argc)
+    while(i <= 4)
     {
         j = 0;
         while(argv[i][j])
         {
             if(ft_isnum(argv[i][j]) == 0)
-            {
-                printf("Error: Argument %d contains invalid characters.\n", i);
-                return(false);
-            }
+                error_exit("Error: Argument contains invalid characters.\n");
             j++;
         }
         if (atoi(argv[i]) <= 0)
-        {
-            printf("Error: Argument %d must be a positive number.\n", i);
-            return false;
-        }
+            error_exit("Error: Argument must be a positive number.\n");
         i++;
     }
+
+    //optional 5th argument
+    if (argv[5]) {
+        validate_optional_input(argv[5]);
+    }
+    // validate num of philos
+    if(ft_atoi(argv[1]) > MAX_PHILOSOPHERS)
+        error_exit("Error: Too many philosophers...");
     return(true);
 }
-
-//while argv[1][i]

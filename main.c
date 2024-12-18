@@ -6,7 +6,7 @@
 /*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 17:41:25 by ecymer            #+#    #+#             */
-/*   Updated: 2024/12/18 18:04:37 by ecymer           ###   ########.fr       */
+/*   Updated: 2024/12/18 20:08:25 by ecymer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int     main(int argc, char *argv[])
     t_data *table;
     if(5 == argc || 6 == argc)
     {
-        validate_input(argc, argv);
+        validate_input(argv);
+        printf("%s\n", "jupi");
         // 1. errors checking, filling table table
         //parse_input(&table, argv); 
         // 2. creating the actual thing
