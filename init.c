@@ -6,7 +6,7 @@
 /*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 17:41:33 by ecymer            #+#    #+#             */
-/*   Updated: 2024/12/30 00:19:24 by ecymer           ###   ########.fr       */
+/*   Updated: 2024/12/30 00:55:50 by ecymer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@ size_t	get_current_time(void)
 	if (gettimeofday(&time, NULL) == -1)
 		write(2, "gettimeofday() error\n", 22);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+void	init_forks(pthread_mutex_t *forks, int philo_num)
+{
+	int	i;
+
+	i = 0;
+	while (i < philo_num)
+	{
+		pthread_mutex_init(&forks[i], NULL);
+		i++;
+	}
 }
 
 void	init_philo(t_philo *philo, int id, char *argv[], t_program *program)
