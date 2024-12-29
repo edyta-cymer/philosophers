@@ -6,7 +6,7 @@
 /*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 17:41:25 by ecymer            #+#    #+#             */
-/*   Updated: 2024/12/18 20:08:25 by ecymer           ###   ########.fr       */
+/*   Updated: 2024/12/29 23:39:38 by ecymer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int     main(int argc, char *argv[])
 {
-    t_data *table;
+    t_program   program;
+    t_philo     philo[MAX_PHILOSOPHERS];
+    
     if(5 == argc || 6 == argc)
     {
         validate_input(argv);
@@ -22,7 +24,7 @@ int     main(int argc, char *argv[])
         // 1. errors checking, filling table table
         //parse_input(&table, argv); 
         // 2. creating the actual thing
-        init_data(&table, argc, argv);
+        init_data(&program, philo);
         // 3. 
         //dinner_start(&table);
         // 4. No leaks ->phillo is full or one phillo died
@@ -34,3 +36,6 @@ int     main(int argc, char *argv[])
     }
     return(0);
 }
+
+
+//1. Inicjalizacja forkow inputu i filozofow. 

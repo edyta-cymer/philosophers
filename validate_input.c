@@ -6,7 +6,7 @@
 /*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 17:41:16 by ecymer            #+#    #+#             */
-/*   Updated: 2024/12/18 20:23:32 by ecymer           ###   ########.fr       */
+/*   Updated: 2024/12/29 23:33:27 by ecymer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,15 @@ bool    validate_input(char *argv[])
                 error_exit("Error: Argument contains invalid characters.\n");
             j++;
         }
-        if (atoi(argv[i]) <= 0)
+        if (ft_atoi(argv[i]) <= 0)
             error_exit("Error: Argument must be a positive number.\n");
         i++;
     }
-
-    //optional 5th argument
     if (argv[5]) {
         validate_optional_input(argv[5]);
     }
-    // validate num of philos
     if(ft_atoi(argv[1]) > MAX_PHILOSOPHERS)
         error_exit("Error: Too many philosophers...");
+        
     return(true);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/19 14:59:31 by ecymer            #+#    #+#             */
+/*   Updated: 2024/12/29 23:29:31 by ecymer           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h> // malloc, free
 #include <stdio.h> // printf
 #include <unistd.h> // write, usleep
@@ -10,59 +22,41 @@
 #define MAX_PHILOSOPHERS 200
 
 
-/*
-OPCODE for mutex and threads functions */
-// enumeracja
-typedef enum    e_opcode
+typedef struct s_philo
 {
-    LOCK,
-    UNLOCK,
-    INIT,
-    DESTROY,
-    CREATE,
-    JOIN,
-    DETACH
-}           t_opcode;
-/*STRUCTURES*/
-typedef pthread_mutex_t t_mtx;
+	pthread_t		thread;
+	int				id;
+	int				eating;
+	int				meals_eaten;
+	size_t			last_meal;
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	size_t			start_time;
+	int				num_of_philos;
+	int				num_times_to_eat;
+	int				*dead;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	*write_lock;
+	pthread_mutex_t	*dead_lock;
+	pthread_mutex_t	*meal_lock;
+}					t_philo;
 
-typedef struct s_table t_table;
-
-/*FORK*/
-typedef struct  s_fork {
-    t_mtx fork;
-    int fork_id;
-}               t_fork;
-
-/*PHILO*/
-typedef struct s_philosopher {
-    int id;
-    int meals_eaten;
-    long last_meal_time;
-    pthread_mutex_t *left_fork;
-    pthread_mutex_t *right_fork;
-    struct s_data *data;
-} t_philosopher;
-
-
-/*TABLE*/
-typedef struct s_data {
-    int num_philosophers;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int num_meals;
-    long start_time;
-    pthread_mutex_t *forks;
-    pthread_mutex_t print_lock;
-    t_philosopher *philosophers;
-} t_data;
+typedef struct s_program
+{
+	int				dead_flag;
+	pthread_mutex_t	dead_lock;
+	pthread_mutex_t	meal_lock;
+	pthread_mutex_t	write_lock;
+	t_philo			*philos;
+}					t_program;
 
 bool    validate_input(char *argv[]);
 bool    validate_optional_input(const char *arg);
 bool    is_valid_num(const char *arg);
 
-int		init_data(t_data **project, int argc, char *argv[]);
+int		init_data(t_program *program, t_philo *philo);
 void    error_exit(const char *error);
 int	ft_atoi(const char *str);
 int	ft_isnum(char c);
