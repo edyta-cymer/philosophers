@@ -6,7 +6,7 @@
 /*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:31 by ecymer            #+#    #+#             */
-/*   Updated: 2024/12/29 23:29:31 by ecymer           ###   ########.fr       */
+/*   Updated: 2024/12/30 00:18:15 by ecymer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ bool    validate_input(char *argv[]);
 bool    validate_optional_input(const char *arg);
 bool    is_valid_num(const char *arg);
 
-int		init_data(t_program *program, t_philo *philo);
+void		init_data(t_program *program, t_philo *philo);
+void		init_philo(t_philo *philo, int id, char *argv[], t_program *program);
+void		init_philos(t_philo *philo, t_program *program, pthread_mutex_t *forks, char *argv[]);
+size_t		get_current_time(void);
 void    error_exit(const char *error);
 int	ft_atoi(const char *str);
 int	ft_isnum(char c);
