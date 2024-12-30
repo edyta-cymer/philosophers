@@ -6,7 +6,7 @@
 #    By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/29 23:25:26 by ecymer            #+#    #+#              #
-#    Updated: 2024/12/29 23:36:28 by ecymer           ###   ########.fr        #
+#    Updated: 2024/12/30 02:55:41 by ecymer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME = philo
 
 # Source files
 SRC_DIR = ./
-SRC = main.c utils.c init.c validate_input.c
-# //threads.c monitor.c actions.c
+SRC = main.c utils.c init.c validate_input.c 
+# threads.c monitor.c actions.c
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 OBJS = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
