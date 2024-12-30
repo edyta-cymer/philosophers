@@ -6,7 +6,7 @@
 /*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:31 by ecymer            #+#    #+#             */
-/*   Updated: 2024/12/30 00:18:15 by ecymer           ###   ########.fr       */
+/*   Updated: 2024/12/30 01:05:23 by ecymer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 #include <stdio.h> // printf
 #include <unistd.h> // write, usleep
 #include <stdbool.h>
-#include <pthread.h> // mutex: init destroy lock unlock. Threads: create join detach
+#include <pthread.h>
 #include <sys/time.h> // gettimeofday
 #include <limits.h> // INT_MAX
 #include <errno.h>
 
 #define MAX_PHILOSOPHERS 200
-
 
 typedef struct s_philo
 {
@@ -52,14 +51,14 @@ typedef struct s_program
 	t_philo			*philos;
 }					t_program;
 
-bool    validate_input(char *argv[]);
-bool    validate_optional_input(const char *arg);
-bool    is_valid_num(const char *arg);
-
-void		init_data(t_program *program, t_philo *philo);
-void		init_philo(t_philo *philo, int id, char *argv[], t_program *program);
-void		init_philos(t_philo *philo, t_program *program, pthread_mutex_t *forks, char *argv[]);
-size_t		get_current_time(void);
-void    error_exit(const char *error);
-int	ft_atoi(const char *str);
-int	ft_isnum(char c);
+bool	validate_input(char *argv[]);
+bool	validate_optional_input(const char *arg);
+bool	is_valid_num(const char *arg);
+void	init_data(t_program *program, t_philo *philo);
+void	init_philo(t_philo *philo, int id, char *argv[], t_program *program);
+void	init_philos(t_philo *philo, t_program *program,
+			pthread_mutex_t *forks, char *argv[]);
+size_t	get_current_time(void);
+void	error_exit(const char *error);
+int		ft_atoi(const char *str);
+int		ft_isnum(char c);

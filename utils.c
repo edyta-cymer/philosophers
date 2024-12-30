@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utills.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecymer <<marvin@42.fr>>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 14:59:18 by ecymer            #+#    #+#             */
-/*   Updated: 2024/12/19 14:59:20 by ecymer           ###   ########.fr       */
+/*   Updated: 2024/12/30 01:12:22 by ecymer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "philo.h"
 
 void    error_exit(const char *error)
 {
-    printf("%s\n", error);
-    exit(EXIT_FAILURE);
+	printf("%s\n", error);
+	exit(EXIT_FAILURE);
 }
 
 static int	ft_isspace(char c)
